@@ -1,20 +1,20 @@
 {
-  "name": "create-aeroclient",
-  "version": "1.0.0",
-  "description": "creates an aeroclient project",
-  "main": "dist/index.js",
-  "repository": "https://github.com/aero-ware/create-aeroclient.git",
-  "author": "Dheeraj Prakash <dheerajpv16@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@aeroware/aeroclient": "^3.1.0",
-    "commander": "^7.1.0",
-    "dotenv": "^8.2.0",
-    "fs-extra": "^9.1.0"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^9.0.7",
-    "@types/node": "^14.14.31"
-  }
+    "name": "create-aeroclient",
+    "version": "1.0.0",
+    "description": "Creates an AeroClient project",
+    "main": "dist/index.js",
+    "repository": "https://github.com/aero-ware/create-aeroclient.git",
+    "author": "Dheeraj Prakash <dheerajpv16@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "@aeroware/aeroclient": "^3.1.0",
+        "commander": "^7.1.0",
+        "dotenv": "^8.2.0",
+        "fs-extra": "^9.1.0"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.7",
+        "@types/node": "^14.14.31"
+    }
 }

@@ -1,20 +1,14 @@
-import { Command } from "commander";
 import { execSync } from "child_process";
-import { copy, mkdir, writeFile } from "fs-extra";
+import { Command } from "commander";
+import { copy, mkdir } from "fs-extra";
 import path from "path";
 
 const program = new Command()
     .version("1.0.0")
-    .option("-t, --typescript ", "creates the project in typescript", false)
+    .option("-t, --typescript ", "creates the project in TypeScript", false)
     .arguments("<name>")
-    .option(
-        "-e, --example",
-        "uses a github repo as a link to generate a project. Useful if you have templates."
-    )
-    .option(
-        "-P, --example-path",
-        "use this as the branch name if the branch name you want to use has a slash (/) in it"
-    )
+    .option("-e, --example", "uses a github repo as a link to generate a project")
+    .option("-P, --example-path", "use this as the branch name if the branch name you want to use has a slash (/) in it")
     .addHelpText(
         "before",
         "create-aeroclient is an easy-to-use CLI for creating a Discord bot using AeroWare's AeroClient.\n" +
@@ -31,9 +25,9 @@ const program = new Command()
             _command
         ) => {
             console.log(
-                `Creating an AeroClient project named ${name} in ${
-                    options.typescript ? "typescript" : "javascript"
-                } ${options.example ? `from ${options.example}` : ""}...`
+                `Creating an AeroClient project named ${name} in ${options.typescript ? "TypeScript" : "JavaScript"} ${
+                    options.example ? `from ${options.example}` : ""
+                }...`
             );
 
             const projectRoot = path.join(process.cwd(), name);
@@ -48,29 +42,18 @@ const program = new Command()
                 );
                 await mkdir(path.join(projectRoot, "src"));
                 if (options.typescript) {
-                    await copy(
-                        "../templates/ts",
-                        path.join(projectRoot, "src")
-                    );
+                    await copy("../templates/ts", path.join(projectRoot, "src"));
                     console.log(
-                        execSync("npm i typescript tsc", {
-                            cwd: projectRoot,
-                        }).toString()
-                    );
-                    console.log(
-                        execSync("npm i --save-dev @types/node", {
+                        execSync("npm i --save-dev typescript ts-node nodemon @types/node", {
                             cwd: projectRoot,
                         }).toString()
                     );
                 } else {
-                    await copy(
-                        "../templates/js",
-                        path.join(projectRoot, "src")
-                    );
+                    await copy("../templates/js", path.join(projectRoot, "src"));
                 }
                 await copy("../templates/.env", path.join(projectRoot, ".env"));
                 console.log(
-                    execSync("npm i @aeroware/aeroclient dotenv", {
+                    execSync("npm i --save @aeroware/aeroclient dotenv", {
                         cwd: projectRoot,
                     }).toString()
                 );
